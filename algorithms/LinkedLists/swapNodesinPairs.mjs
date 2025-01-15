@@ -6,14 +6,29 @@ import ListNode from "./ListNode.mjs";
  * */
 
 const swapNodesInPairs = (head) => {
-  let curr = head;
-  let nextNode = curr.next;
-  curr.next = curr;
-  curr = nextNode;
-  return curr;
+  if (!head || !head.next) {
+    return head;
+  }
+  let prev = null;
+  let dummyNode = head.next;
+  while (head && head.next) {
+    if (prev) {
+      prev.next = head.next;
+    }
+    let nextNode = head.next.next;
+    head.next.next = head;
+    prev = head;
+    head.next = nextNode;
+    head = nextNode;
+  }
+  return dummyNode;
 };
 
-const tail = new ListNode(2, null);
-const head = new ListNode(1, tail);
+let node6 = new ListNode(6, null);
+let node5 = new ListNode(5, node6);
+let node4 = new ListNode(4, node5);
+let node3 = new ListNode(3, node4);
+let node2 = new ListNode(2, node3);
+let head = new ListNode(1, node2);
 
 console.log({ ans: swapNodesInPairs(head) });
