@@ -19,19 +19,22 @@ let reverseList = (head) => {
  */
 
 const reverseListRecursive = (head) => {
+  function reverseList(node, prev) {
+    if (!node) {
+      return prev;
+    }
+    let newNode = node.next;
+    node.next = prev;
+    prev = node;
+
+    return reverseList(newNode, prev);
+  }
   let curr = head;
   let prev = null;
-  if (!curr && !curr?.next) {
-    return prev;
-  }
   let nextNode = curr.next;
-
-  // pointer switch
-  curr.next = reverseListRecursive(nextNode);
-  // switch position
-  // prev = curr;
+  curr.next = prev;
   prev = curr;
-  return prev;
+  return reverseList(nextNode, prev);
 };
 
 let node4 = new ListNode(4, null);
