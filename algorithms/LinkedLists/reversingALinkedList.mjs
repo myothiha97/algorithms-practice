@@ -1,7 +1,6 @@
 import ListNode from "./ListNode.mjs";
 
-let reverseList = (head) => {
-  let prev = null;
+export let reverseList = (head, prev = null) => {
   let curr = head;
 
   while (curr) {
@@ -42,4 +41,4 @@ let node3 = new ListNode(3, node4);
 let node2 = new ListNode(2, node3);
 let head = new ListNode(1, node2);
 
-console.log({ ans: reverseListRecursive(head) });
+// console.log({ ans: reverseListRecursive(head) });

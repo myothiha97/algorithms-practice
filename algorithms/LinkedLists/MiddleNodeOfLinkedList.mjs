@@ -1,6 +1,6 @@
 import ListNode from "./ListNode.mjs";
 
-var middleNode = function (head) {
+export var middleNode = function (head) {
   let slow = head;
   let fast = head;
   while (fast && fast.next) {
@@ -15,4 +15,4 @@ const node2 = new ListNode(2, node3);
 const node1 = new ListNode(1, node2);
 const head = new ListNode(0, node1);
 
-console.log({ ans: middleNode(head) });
+// console.log({ ans: middleNode(head) });
