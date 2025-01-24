@@ -11,7 +11,7 @@ class Node {
   }
 }
 
-class Stack {
+export class Stack {
   constructor() {
     this.top = null;
     this.length = 0;
@@ -58,18 +58,20 @@ class Stack {
     if (this.isEmpty()) {
       return null;
     }
-    return this.top.val;
+    return this.top;
   }
 }
 
-const stack = new Stack();
-stack.push("discord");
-stack.push("udemy");
-stack.push("google");
-stack.push("firefox");
+if (import.meta.main) {
+  const stack = new Stack();
+  stack.push("discord");
+  stack.push("udemy");
+  stack.push("google");
+  stack.push("firefox");
 
-console.log({ value: stack.pop() });
-console.log({ value: stack.pop() });
-console.log({ value: stack.pop() });
-console.log({ value: stack.pop() });
-console.log({ value: stack.pop() });
+  console.log({ value: stack.pop() });
+  console.log({ value: stack.pop() });
+  console.log({ value: stack.pop() });
+  console.log({ value: stack.pop() });
+  console.log({ value: stack.pop() });
+}

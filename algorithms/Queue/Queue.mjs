@@ -4,7 +4,7 @@
  *
  */
 
-class Node {
+export class Node {
   constructor(value) {
     this.value = value;
     this.next = null;
@@ -42,18 +42,20 @@ class Queue {
   //isEmpty;
 }
 
-const myQueue = new Queue();
-myQueue.enqueue("john");
-myQueue.enqueue("thomas");
-myQueue.enqueue("kite");
-console.log(myQueue.enqueue("lenny"));
-console.log({ first: myQueue.peek() });
-console.log({ value: myQueue.dequeue() });
-console.log({ value: myQueue.dequeue() });
-console.log({ value: myQueue.dequeue() });
-console.log({ value: myQueue.dequeue() });
-console.log({ value: myQueue.dequeue() });
-console.log({ first: myQueue.peek() });
+if (import.meta.main) {
+  const myQueue = new Queue();
+  myQueue.enqueue("john");
+  myQueue.enqueue("thomas");
+  myQueue.enqueue("kite");
+  console.log(myQueue.enqueue("lenny"));
+  console.log({ first: myQueue.peek() });
+  console.log({ value: myQueue.dequeue() });
+  console.log({ value: myQueue.dequeue() });
+  console.log({ value: myQueue.dequeue() });
+  console.log({ value: myQueue.dequeue() });
+  console.log({ value: myQueue.dequeue() });
+  console.log({ first: myQueue.peek() });
+}
 
 //Joy
 //Matt
