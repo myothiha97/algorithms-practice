@@ -4,38 +4,36 @@ import process from "process";
 
 class QueueWithStack {
   constructor() {
-    this.stack = new Stack();
-    this.last = null;
+    this.s1 = new Stack(); // to keep track of all the values that enqueue(push) to the queue
+    this.s2 = new Stack(); // this is the one we gonna dequeue(pop) from
   }
   peek() {
-    if (this.stack.isEmpty) return null;
-    return this.stack.peek();
+    if (this.s1.isEmpty()) {
+      return null;
+    }
+    return this.s2.push(this.s1.pop()).top.val;
   }
   enqueue(value) {
-    this.stack.push(value);
-    return this;
+    this.s1.push(value);
+    // return this;
   }
   dequeue() {
-    let curr = this.stack.top;
-    let toDeQueueValue = null;
-    let prev = null;
+    /** The implementation steps
+     * before doing the action we need to check if there is any item in s1 or s2, otherwise return null
+     * first if there are items in s1 , we pop all values to s2, else we skip this step
+     * then we just pop from s2
+     *
+     */
 
-    if (!curr) {
-      return toDeQueueValue;
-    }
-
-    while (curr && curr.next) {
-      prev = curr;
-      curr = curr.next;
-    }
-    toDeQueueValue = curr.val;
-    if (prev) {
-      prev.next = null;
+    // the time complexity for this function is amortize O(1) since we only need to loop once
+    if (!this.s2.isEmpty() || !this.s1.isEmpty()) {
+      while (!this.s1.isEmpty()) {
+        this.s2.push(this.s1.pop());
+      }
+      return this.s2.pop();
     } else {
-      this.stack.top = null;
+      return null;
     }
-
-    return toDeQueueValue;
   }
 }
 
